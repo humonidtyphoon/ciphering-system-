@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLDocumentController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" onDragDropped="#messageFileDragDrop" onDragOver="#messageFileDragOver" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label layoutX="239.0" layoutY="14.0" text="Drop the message file " />
+            <Label fx:id="lbl" layoutX="181.0" layoutY="137.0" prefHeight="17.0" prefWidth="145.0" text="Label" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label layoutX="255.0" layoutY="14.0" text="Drop the key file " />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

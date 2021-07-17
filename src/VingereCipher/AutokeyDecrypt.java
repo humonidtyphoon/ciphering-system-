@@ -1,0 +1,34 @@
+package VingereCipher;
+
+
+public class AutokeyDecrypt extends VigenereDecryption
+{
+    protected boolean valid = true;
+
+    @Override
+    protected void CreateKey() 
+    {
+        valid = true;
+        String key = getKey();
+        
+        for(int j=0; j<key.length(); j++)
+        {
+            
+   
+            if(key.charAt(j) > 122 || key.charAt(j) < 65 || key.charAt(j) == ' ' ||
+                        (key.charAt(j) > 90 && key.charAt(j) < 97))
+                {
+                        valid = false;
+                        setValidKey(valid);
+                        return;
+                }
+        }
+        setValidKey(valid);
+        key = key.toUpperCase();
+        
+   }
+    
+    
+    
+    
+}

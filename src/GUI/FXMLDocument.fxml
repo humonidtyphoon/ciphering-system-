@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="362.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLDocumentController">
+   <children>
+      <MenuBar VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <Menu mnemonicParsing="false" text="Open file">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Message file" />
+                        <MenuItem mnemonicParsing="false" text="Key file" />
+                     </items></Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="History">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#historyButtonMenu" text="Show all history" />
+                  <MenuItem mnemonicParsing="false" text="Clear recent history" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="355.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane fx:id="tp" prefHeight="324.0" prefWidth="655.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab fx:id="tab1" text="Caeser Cihper">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="293.0" prefWidth="653.0">
+                           <children>
+                              <SplitPane dividerPositions="0.5022488755622189" layoutX="5.0" layoutY="183.0" prefHeight="105.0" prefWidth="655.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" onDragDropped="#messageFileDragDrop" onDragOver="#caeserDragOver" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="130.0" layoutY="14.0" text="Message file" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" onDragDropped="#keyFileDragDrop" onDragOver="#caeserKeyDragOver" prefHeight="172.0" prefWidth="338.0">
+                                       <children>
+                                          <Label layoutX="142.0" layoutY="14.0" text="Key file" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                              <HBox layoutX="20.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Message: " />
+                                    <TextField fx:id="caeserMsgText" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="49.0" layoutY="90.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Key:  " />
+                                    <TextField fx:id="caeserKeyText" prefHeight="25.0" prefWidth="142.0" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="110.0" layoutY="123.0" mnemonicParsing="false" onAction="#messageFileChooserButtonCaeser" text="Browse" />
+                              <Label layoutX="115.0" layoutY="154.0" text="Or drag a file" />
+                              <Label layoutX="11.0" layoutY="14.0" text="Enter Message and Key:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="273.0" layoutY="55.0" mnemonicParsing="false" onAction="#caeserEncryptButton" text="Encrypt" />
+                              <Button layoutX="272.0" layoutY="87.0" mnemonicParsing="false" onAction="#caeserDecryptButton" text="Decrypt" />
+                              <HBox layoutX="378.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Output: " />
+                                    <Label fx:id="caeserResult" prefHeight="17.0" prefWidth="85.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="caeserError" layoutX="272.0" layoutY="126.0" prefHeight="17.0" prefWidth="245.0" text="The message and key can't be empty" textFill="RED" visible="false" />
+                              <Label layoutX="37.0" layoutY="126.0" text="Message file:" />
+                              <Label layoutX="186.0" layoutY="127.0" text="Key file:" />
+                              <Button layoutX="231.0" layoutY="124.0" mnemonicParsing="false" onAction="#keyFileChooserButtonCaeser" text="Browse" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Vingere Cipher">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="332.0">
+                           <children>
+                              <HBox layoutX="20.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Message: " />
+                                    <TextField fx:id="vingereMsgText" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="49.0" layoutY="90.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Key:  " />
+                                    <TextField fx:id="vingereKeyText" prefHeight="25.0" prefWidth="142.0" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="101.0" layoutY="191.0" mnemonicParsing="false" onAction="#fileChooserButtonVingere" text="Browse" />
+                              <Label layoutX="59.0" layoutY="149.0" text="or choose a file:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="14.0" text="Enter Message and Key:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="273.0" layoutY="55.0" mnemonicParsing="false" onAction="#vingereEncryptButton" text="Encrypt" />
+                              <Button layoutX="272.0" layoutY="87.0" mnemonicParsing="false" onAction="#vingereDecryptButton" text="Decrypt" />
+                              <HBox layoutX="378.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Output: " />
+                                    <Label fx:id="vingereResult" prefHeight="17.0" prefWidth="85.0" />
+                                 </children>
+                              </HBox>
+                              <Group>
+                                 <children>
+                                    <RadioButton fx:id="autoButton" layoutX="273.0" layoutY="126.0" mnemonicParsing="false" text="Auto Key">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="group1" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="repButton" layoutX="272.0" layoutY="148.0" mnemonicParsing="false" text="Repeating Key" toggleGroup="$group1" />
+                                 </children>
+                              </Group>
+                              <Label fx:id="vingereError" layoutX="51.0" layoutY="126.0" text="The message and key can't be empty" textFill="RED" visible="false" />
+                             <!-- <Label fx:id="vingereError" layoutX="51.0" layoutY="126.0" text="The message and key can't be empty" textFill="RED" visible="false" />-->
+                             <!--<Button layoutX="274.0" layoutY="191.0" mnemonicParsing="false" onAction="#fileChooserButton" text="Browse" />-->
+                              <Label layoutX="229.0" layoutY="194.0" text="Key file:" />
+                              <Label layoutX="29.0" layoutY="194.0" text="Message file:" />
+                              <Button layoutX="274.0" layoutY="191.0" mnemonicParsing="false" onAction="#keyFileChooserButtonVingere" text="Browse" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Play fair Cihper">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="332.0">
+                           <children>
+                              <HBox layoutX="20.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Message: " />
+                                    <TextField fx:id="playFairMsgText" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="49.0" layoutY="90.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Key:  " />
+                                    <TextField fx:id="playFairKeyText" prefHeight="25.0" prefWidth="142.0" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="100.0" layoutY="191.0" mnemonicParsing="false" onAction="#fileChooserButtonPlayFair" text="Browse" />
+                              <Label layoutX="59.0" layoutY="149.0" text="or choose a file:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="14.0" text="Enter Message and Key:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="273.0" layoutY="55.0" mnemonicParsing="false" onAction="#playFairEncryptButton" text="Encrypt" />
+                              <Button layoutX="272.0" layoutY="87.0" mnemonicParsing="false" onAction="#playFairDecryptButton" text="Decrypt" />
+                              <HBox layoutX="378.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Output: " />
+                                    <Label fx:id="playFairResult" prefHeight="17.0" prefWidth="85.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="playFairError" layoutX="51.0" layoutY="126.0" text="The message and key can't be empty" textFill="RED" visible="false" />
+                              <Label layoutX="28.0" layoutY="194.0" prefHeight="17.0" prefWidth="91.0" text="Message file: " />
+                              <Label layoutX="227.0" layoutY="194.0" prefHeight="17.0" prefWidth="91.0" text="Key file: " />
+                              <Button layoutX="272.0" layoutY="191.0" mnemonicParsing="false" onAction="#keyFileChooserButtonPlayFair" text="Browse" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Rail fence cipher">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="332.0">
+                           <children>
+                              <HBox layoutX="20.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Message: " />
+                                    <TextField fx:id="railFenceMsgText" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="49.0" layoutY="90.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Key:  " />
+                                    <TextField fx:id="railFenceKeyText" prefHeight="25.0" prefWidth="142.0" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="94.0" layoutY="190.0" mnemonicParsing="false" onAction="#fileChooserButtonRailFence" text="Browse" />
+                              <Label layoutX="59.0" layoutY="149.0" text="or choose a file:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="14.0" text="Enter Message and Key:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="273.0" layoutY="55.0" mnemonicParsing="false" onAction="#railFenceEncryptButton" text="Encrypt" />
+                              <Button layoutX="272.0" layoutY="87.0" mnemonicParsing="false" onAction="#railFenceDecryptButton" text="Decrypt" />
+                              <HBox layoutX="378.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Output: " />
+                                    <Label fx:id="RailFenceResult" prefHeight="17.0" prefWidth="85.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="railFenceError" layoutX="51.0" layoutY="126.0" text="The message and key can't be empty" textFill="RED" visible="false" />
+                              <Label layoutX="14.0" layoutY="194.0" prefHeight="17.0" prefWidth="91.0" text="Message file: " />
+                              <Label layoutX="227.0" layoutY="194.0" prefHeight="17.0" prefWidth="91.0" text="Key file: " />
+                              <Button layoutX="274.0" layoutY="190.0" mnemonicParsing="false" onAction="#keyFileChooserButtonRailFence" text="Browse" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Hill cipher">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="655.0">
+                           <children>
+                              <HBox layoutX="20.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Message: " />
+                                    <TextField fx:id="hillMsgText" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="49.0" layoutY="90.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Key:  " />
+                                    <TextField fx:id="hillKeyText" prefHeight="25.0" prefWidth="142.0" />
+                                 </children>
+                              </HBox>
+                              <Button layoutX="94.0" layoutY="190.0" mnemonicParsing="false" onAction="#fileChooserButtonHill" text="Browse" />
+                              <Label layoutX="59.0" layoutY="149.0" text="or choose a file:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="14.0" text="Enter Message and Key:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="273.0" layoutY="55.0" mnemonicParsing="false" onAction="#hillEncryptButton" text="Encrypt" />
+                              <Button layoutX="272.0" layoutY="87.0" mnemonicParsing="false" onAction="#hillDecryptButton" text="Decrypt" />
+                              <HBox layoutX="378.0" layoutY="55.0" prefHeight="44.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="67.0" text="Output: " />
+                                    <Label fx:id="HillResult" prefHeight="17.0" prefWidth="85.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="hillError" layoutX="51.0" layoutY="126.0" text="The message and key can't be empty" textFill="RED" visible="false" />
+                              <Button layoutX="274.0" layoutY="190.0" mnemonicParsing="false" onAction="#keyFileChooserButtonHill" text="Browse" />
+                              <Label layoutX="14.0" layoutY="194.0" prefHeight="17.0" prefWidth="91.0" text="Message file: " />
+                              <Label layoutX="227.0" layoutY="194.0" prefHeight="17.0" prefWidth="45.0" text="Key file: " />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../../../../CipheringSystem/BasicApplication.css" />
+   </stylesheets>
+</VBox>
